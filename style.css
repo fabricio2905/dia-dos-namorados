@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background: #f8f6f1;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.background-hearts::before,
+.background-hearts::after {
+  content: "💖 💕 💗 💓 💘 💝";
+  position: fixed;
+  font-size: 2rem;
+  animation: floatHearts 20s linear infinite;
+  opacity: 0.2;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.background-hearts::after {
+  top: 60%;
+  left: -50%;
+  animation-delay: 7s;
+}
+
+.background-hearts::before {
+  top: 10%;
+  left: -60%;
+}
+
+@keyframes floatHearts {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(200vw);
+  }
+}
+
+.gallery {
+  --d: 16s;
+  /* duration */
+  display: grid;
+  place-items: center; /* Center both horizontally and vertically */
+  width: 220px;
+  margin-left: 220px;
+}
+
+.gallery > img {
+  grid-area: 1/1;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 10px solid #f2f2f2;
+  box-shadow: 0 0 4px #0007;
+  z-index: 2;
+  animation: slide var(--d) infinite, z-order var(--d) infinite steps(1);
+}
+
+.gallery img:last-child {
+  animation-name: slide, z-order-last;
+}
+
+.gallery > img:nth-child(1) {
+  animation-delay: calc(0*var(--d));
+  --r: 16deg;
+}
+
+.gallery > img:nth-child(2) {
+  animation-delay: calc(-0.2*var(--d));
+  --r: -1deg;
+}
+
+.gallery > img:nth-child(3) {
+  animation-delay: calc(-0.4*var(--d));
+  --r: -19deg;
+}
+
+.gallery > img:nth-child(4) {
+  animation-delay: calc(-0.6*var(--d));
+  --r: 6deg;
+}
+
+.gallery > img:nth-child(5) {
+  animation-delay: calc(-0.8*var(--d));
+  --r: -8deg;
+}
+
+@keyframes slide {
+  10% {
+    transform: translateX(120%) rotate(var(--r));
+  }
+  0%, 100%, 20% {
+    transform: translateX(0%) rotate(var(--r));
+  }
+}
+
+@keyframes z-order {
+  10%, 20% {
+    z-index: 1;
+  }
+  80% {
+    z-index: 2;
+  }
+}
+
+@keyframes z-order-last {
+  10%, 20% {
+    z-index: 1;
+  }
+  90% {
+    z-index: 2;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background: #f8f6f1;
+  overflow: hidden;
+}
+
+#hedlinecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+#shine {
+  font-size: 60px;
+  font-weight: 400;
+  font-family: 'Great Vibes', cursive;
+  color: rgba(255, 0, 102, 0.3);
+  z-index: 10;
+  background: -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+  -webkit-background-size: 150px;
+  -webkit-background-clip: text;
+  -webkit-animation-name: shine;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  text-shadow: 0 0px 0px rgba(233, 85, 189, 0.419);
+}
+
+
+@-webkit-keyframes shine {
+  0%, 10% {
+    background-position: -1000px;
+  }
+  20% {
+    background-position: top left;
+  }
+  90% {
+    background-position: top right;
+  }
+  100% {
+    background-position: 1000px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #shine {
+  font-size: 22px;
+}
+#hedlinecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 60px;
+}
+
+.gallery {
+  --d: 10s;
+  /* duration */
+  display: grid;
+  place-items: center; /* Center both horizontally and vertically */
+  width: 150px;
+  margin-left: 60px;
+}
+}
+
+.message {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 22px;
+  color: #d63384;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px 20px;
+  animation: fadeIn 2s ease-in-out;
+  z-index: 5;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media only screen and (max-width: 600px) {
+  #shine {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  #hedlinecontainer {
+    margin-bottom: 30px;
+  }
+
+  .gallery {
+    --d: 14s;
+    width: 160px;
+    margin-left: 0;
+  }
+
+  .message {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+}
