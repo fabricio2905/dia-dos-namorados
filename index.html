@@ -35,22 +35,23 @@
   <div class="message">
     <p>Você é meu presente mais lindo. Te amo com todo o meu coração! 💖</p>
     <p>A gente é tão um do outro que o resto é tão pouco. 💞</p>
+    <p>
+    <button onclick="startMusic()" style="padding: 10px 20px; background-color: #ff69b4; border: none; border-radius: 20px; color: white; font-size: 16px; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+      ▶️ Ouvir nossa música 💖
+    </button>
+  </p>
   </div>
 
 
 <script>
   const music = document.getElementById('bg-music');
-  music.volume = 0.2; 
+  music.volume = 0.2;
 
-  window.addEventListener('load', () => {
-
-    const playPromise = music.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        console.log('Autoplay bloqueado. É necessário interação do usuário.');
-      });
-    }
-  });
+  function startMusic() {
+    music.play().catch(() => {
+      alert("Clique novamente para ativar a música.");
+    });
+  }
 </script>
 
 </body>
